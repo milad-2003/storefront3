@@ -13,6 +13,7 @@ django-filter = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"
 python-decouple = "*"
+pillow = "*"
 
 [dev-packages]
 autopep8 = "*"
