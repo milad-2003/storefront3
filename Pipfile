@@ -14,6 +14,7 @@ djoser = "*"
 djangorestframework-simplejwt = "*"
 python-decouple = "*"
 pillow = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 autopep8 = "*"
