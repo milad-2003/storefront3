@@ -16,6 +16,8 @@ python-decouple = "*"
 pillow = "*"
 django-cors-headers = "*"
 django-templated-mail = "*"
+redis = "*"
+celery = "*"
 
 [dev-packages]
 autopep8 = "*"
