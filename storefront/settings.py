@@ -14,6 +14,7 @@ import os
 from datetime import timedelta
 from decouple import config
 from pathlib import Path
+from celery.schedules import crontab
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -188,3 +189,15 @@ ADMINS = [
 ]
 
 CELERY_BROKER_URL = 'redis://localhost:6380/1'
+CELERY_BEAT_SCHEDULE = {
+    'notify_customers': {
+        # full path of the task
+        'task': 'playground.tasks.notify_customers',
+        # how often the tasks should be done
+        'schedule': 5,
+        # specifying the arguments of the notify_customers task
+        'args': ['Hello World']
+        # specifying the keyword arguments if needed:
+        # 'kwargs': {}
+    }
+}
