@@ -194,7 +194,7 @@ CELERY_BEAT_SCHEDULE = {
         # full path of the task
         'task': 'playground.tasks.notify_customers',
         # how often the tasks should be done
-        'schedule': 5,
+        'schedule': crontab(day_of_week=1, hour=7, minute=30),
         # specifying the arguments of the notify_customers task
         'args': ['Hello World']
         # specifying the keyword arguments if needed:
