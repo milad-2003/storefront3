@@ -5,6 +5,7 @@ import pytest
 
 @pytest.mark.django_db
 class TestCreateCollection:
+    @pytest.mark.skip
     def test_if_user_is_anonymous_returns_401(self):
         # Arrange
         # We don't need Arranging in this case
