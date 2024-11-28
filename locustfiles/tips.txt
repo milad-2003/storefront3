@@ -1,0 +1,49 @@
+Optimization
+
+1- Optimizing the python code (Making sure that the python code doesn't translate to costly queries)
+
+    1.1- Preload related objects
+        Product.objects.select_related('...')
+        Product.objects.prefetch_related('...')
+    
+    1.2- Load only what you need
+        Product.objects.only('title')
+        Product.objects.defer('description')
+
+    1.3- Use values
+        Product.objects.values() (We get a dictionary)
+        Product.objects.values_list() (We get a list)
+        Both are cheaper than Initializing a django model
+        If no create, update or delete is needed, then we can optimize the code by using this methods
+
+    1.4- Count properly
+        Product.objects.count() (Good)
+        len(Product.objects.all()) (Bad)
+
+    1.5- Bulk Create/Update
+        Sending only one instruction to the database for creating multiple records
+        Product.objects.bulk_create([])
+
+2- Re-write the query
+        Django ORM might not create an optimal sql query
+        So you should write the optimal sql code by yourself
+
+3- Tune the database
+        Redesigning the tables
+        Adding indexes 
+        etc...
+
+4- Cache the result
+        Store the result in memory
+        This is often but not always faster than reading the data from a database or network
+        Don't assume that caching is always a good idea
+        Sometimes executing a simple query is faster than reading the data from the cache
+        Specially in a production environment where you have a separate cache server
+
+5- Buy more hardware
+        Upgrade the server to one with a faster CPU or more RAM
+        Add more servers
+
+Not every part of the application should be fast
+We should only do these optimizations in critical parts that matter the most
+For example if there is a report that admins are gonna pull up once every 3 month, there is no point optimizing this report. It's ok. they can wait
