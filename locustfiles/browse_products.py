@@ -15,7 +15,7 @@ class WebsiteUser(HttpUser):
         # We only have products in collection 2 - 6
         collection_id = randint(2, 6)
         self.client.get(
-            f'/store/products/?collection_id={collection_id}/',
+            f'/store/products/?collection_id={collection_id}',
             name='/store/products'
         )
 
