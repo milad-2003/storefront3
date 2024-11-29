@@ -38,6 +38,10 @@ class WebsiteUser(HttpUser):
             # For sending data to the server:
             json={'product_id': product_id, 'quantity': 1}
         )
+
+    @task
+    def say_hello(self):
+        self.client.get('/playground/hello/')
     
     # This is automatically called whenever a new user starts browsing our web server
     def on_start(self):
