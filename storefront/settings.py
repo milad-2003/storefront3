@@ -206,3 +206,14 @@ CELERY_BEAT_SCHEDULE = {
         # 'kwargs': {}
     }
 }
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        # Here we use database 2, becuase database 1 is already used for the message broker
+        "LOCATION": "redis://127.0.0.1:6380/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}

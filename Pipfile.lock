@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3266d4fdff07b89efdef298711ffd4bba923356e1adb329b241675109bf50ce2"
+            "sha256": "8033659b298554c6f9ac88a67f9537b29a44035f4bf1e712d8efdf0c1a53d641"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -358,6 +358,15 @@
             "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==24.3"
+        },
+        "django-redis": {
+            "hashes": [
+                "sha256:6a02abaa34b0fea8bf9b707d2c363ab6adc7409950b2db93602e6cb292818c42",
+                "sha256:ebc88df7da810732e2af9987f7f426c96204bf89319df4c6da6ca9a2942edd5b"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.6'",
+            "version": "==5.4.0"
         },
         "django-templated-mail": {
             "hashes": [
