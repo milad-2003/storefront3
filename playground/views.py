@@ -1,12 +1,14 @@
-from django.core.cache import cache
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from rest_framework.views import APIView
 import requests
 
 
-def say_hello(request):
-    key = 'httpbin_result'
-    if cache.get(key) is None:
+class HelloView(APIView):
+    # For class-based views we should use the cache_page decorator inside the method_decorator
+    @method_decorator(cache_page(15 * 60))
+    def get(self, request):
         response = requests.get('https://httpbin.org/delay/2')
         data = response.json()
-        cache.set(key, data, 15 * 60) # Overriding the default cache timeout to 15 minutes
-    return render(request, 'hello.html', {'name': cache.get(key)})
+        return render(request, 'hello.html', {'name': data})
