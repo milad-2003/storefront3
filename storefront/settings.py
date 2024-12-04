@@ -221,3 +221,37 @@ CACHES = {
         }
     }
 }
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler"
+        },
+        "file": {
+            "class": "logging.FileHnadler",
+            "filename": "general.log"
+        }
+    },
+    "loggers": {
+        # Here we define the name of apps to set handlers for them. e.g 'playground' or 'playground.views'
+        # If we use an empty string, this will capture all the logs from all apps
+        "": {
+            "handlers": ['console', 'file'],
+            # Setting the log level: DEBUG, INFO, WARNING, ERROR or CRITICAL. Severity increases from left to right
+            # If we set the log level to ERROR, this will only capture ERROR and levels with higher severity, in this case CRITICAL
+            "level": 'INFO'
+        }
+    },
+    # # Optionally setting a formatter
+    "formatters": {
+        "verbose": {
+    #         # We can use different attributes here
+    #         # These attributes can be found by searching 'python logging logrecord attributes'
+            'format': '{asctime} ({levelname}) - {name} - {message}',
+            'style': '{' # If we use '{' the string that we defined above, will be passed to str.format()
+            # If we set it to '$', This will use str.Template
+        }
+    }
+}
